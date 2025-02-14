@@ -47,7 +47,7 @@ class RouterOS < Oxidized::Model
       cfg.gsub! /# \S+ not ready\r\n/, '' # Remove intermittent $interface not ready comment
       cfg = cfg.split("\n")
       cfg.reject! { |line| line[/^#\s\w{3}\/\d{2}\/\d{4}.*$/] } # Remove date time and 'by RouterOS' comment (v6)
-      cfg.reject! { |line| line[/^#\s\d{4}-\d{2}-\d{2}.*$/] }   # Remove date time and 'by RouterOS' comment (v7)
+      cfg.reject! { |line| line[/^#\s*\d{4}-\d{2}-\d{2}.*$/] }   # Remove date time and 'by RouterOS' comment (v7)
       cfg.join("\n") + "\n"
     end
   end
