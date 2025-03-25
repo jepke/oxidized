@@ -5,13 +5,63 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+### Added
+- unifiap: new model for Unifi APs, switches, and AirOS APs (@clifcox)
+- github: Issue templates for bugs, feature requests and support requests (@robertcheramy)
+- model for Ingate Operating System (@thanegill)
+- model for Easton Gigabit Network Card (@thanegill)
+
+### Changed
+- fortios: support for FortiADC (@electrocret)
+- output/git: cache commit log to improve performance of oxidized-web. Fixes #3121 (@robertcheramy)
+- digest auth handles special characters in passwords by itself (no need to url encode them manually) (@einglasvollkakao)
+- netgear: add pager-handler workaround, fixes: #2394 and #3341 (@candlerb, @syn-bit)
+- Output#version (git/gitcrypt) returns a Time object in its hash for more flexibility in oxidized-web (@robertcheramy)
+
+### Fixed
+- powerconnect: Mask the changing temperature issue for non-stacked switches. Fixes #2088 (@clifcox)
+- Fix frozen string literals (@robertcheramy)
+- powerconnect: Cleanup login/logout logic. Fixes #3437 (@clifcox)
+- aos7: remove extra lines occuring when `show hardware-info` runs slow (@rouven0)
+- srosmd: add ignore regex for 64-bit system uptime (@emiliaaah)
+
+## [0.32.2 – 2025-02-27]
+This patch release mainly fixes the docker building process, wich resulted in
+0.32.1 not beeing built.
+
+### Changed
+- docker image: updated github CI to explicitly build tag versions (@robertcheramy)
+- docker image: update rake build_container to match the tags of GitHub CI (@robertcheramy)
+
+### Fixed
+- powerconnect: restore last line of command output, and remove spurious CR characters. Fixes #2692 (@clifcox)
+- powerconnect: Remove undesirable inserted blank lines during pagination. Fixes #3413 (@clifcox)
+- docker image: remove ubuntu user introduced in noble. Fixes #3336 (@robertcheramy)
+- docker image: correct rights under /home/oxidized. Fixes #3336 (@robertcheramy)
+- docker image: revert the use of GEM_HOME. Fixes #3331 (@robertcheramy)
+- docker image: improve the documentation. Fixes #3336 (@robertcheramy)
+- docker image: remove examples/podman-compose as this is better documented in docs/Docker.md (@robertcheramy)
+
+
+## [0.32.1 – 2025-02-20]
+This patch release fixes a javascript issue in oxidized-web, which is included
+in the Docker container of oxidized.
+
+### Fixed
+- powerconnect: Hide enable, and line secrets. Further Fixes #1212 (#clifcox)
+
+
+## [0.32.0 – 2025-02-17]
+This release fixes a security issue in oxidized-web, which is included in the
+Docker container of oxidized. If you are not using the Docker container but
+use oxidized-web, be sure to update your oxidized-web gem to 0.15.0.
 
 ### Added
 - junos: add unit test (@systeembeheerder)
 - apc_aos: support for scp (@robertcheramy)
 - config: allow model_map and group_map keys to be regexp. Fixes #3360 (@ytti)
 - enterprise_sonic: add new model enterprise_sonic (@ohai89)
-- model for Kornfeld Operating System(@yurenkov)
+- model for Kornfeld Operating System (@yurenkov)
 
 ### Changed
 - sonicos: accept policy message. Fixes #3339 (@Steve-M-C, @robertcheramy)
@@ -30,6 +80,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - aos7: fix prompt for version 8.8x. Fixes #3351 (@robertcheramy)
 - aosw: Hide power measurements (@rouven0)
 - arubainstant: show version prepends a space to prompt when a core file is present. Fixes #3398 (@robertcheramy)
+
 
 ## [0.31.0 – 2024-11-29]
 
